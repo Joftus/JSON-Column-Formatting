@@ -1,0 +1,139 @@
+{
+  "$schema": "http://columnformatting.sharepointpnp.com/columnFormattingSchema.json",
+  "debugMode": true,
+  "elmType": "div",
+  "style": {
+    "min-height": "1.5em",
+    "flex-direction": "column",
+    "align-items": "start"
+  },
+  "children": [
+    {
+      "elmType": "div",
+      "forEach": "person in @currentField",
+      "style": {
+        "justify-content": "center",
+        "margin-top": "=if(loopIndex('person') == 0, '0', '1em')"
+      },
+      "children": [
+        {
+          "elmType": "div",
+          "style": {
+            "display": "flex",
+            "flex-direction": "row",
+            "justify-content": "center",
+            "align-items": "center",
+            "padding": "8px 8px 8px 0",
+            "background-color": "transparent"
+          },
+          "attributes": {
+            "class": "ms-bgColor-neutralLighter"
+          },
+          "children": [
+            {
+              "elmType": "img",
+              "attributes": {
+                "src": "=getUserImage(@currentField.email, 'S')"
+              },
+              "style": {
+                "width": "auto",
+                "height": "auto",
+                "border-radius": "3em",
+                "margin-right": "6px"
+              }
+            },
+            {
+              "elmType": "div",
+              "style": {
+                "margin-left": "0.5em"
+              },
+              "children": [
+                {
+                  "elmType": "div",
+                  "style": {
+                    "display": "flex",
+                    "width": " 100%",
+                    "overflow": " hidden",
+                    "text-overflow": " ellipsis",
+                    "align-items": "center",
+                    "padding-bottom": "8px",
+                    "font-size": "1.2em"
+                  },
+                  "children": [
+                    {
+                      "elmType": "div",
+                      "txtContent": "@currentField.title",
+                      "style": {
+                        "padding-right": "6px"
+                      },
+                      "attributes": {
+                        "class": "ms-fontSize-l ms-fontWeight-semibold ms-fontColor-neutralPrimary"
+                      }
+                    },
+                    {
+                      "elmType": "a",
+                      "style": {
+                        "text-decoration": "none",
+                        "padding-right": "6px"
+                      },
+                      "attributes": {
+                        "iconName": "Mail",
+                        "class": "sp-field-quickActions",
+                        "href": "='mailto:' + @currentField.email + '?subject=Contract Request&body=Dear ' + @currentField.title + ',\r\n'"
+                      }
+                    },
+                    {
+                      "elmType": "a",
+                      "attributes": {
+                        "href": "='https://teams.microsoft.com/l/chat/0/0?users=' + join(@currentField.email,',') + '&topicName=Contract Request&message='",
+                        "class": "ms-fontColor-themePrimary ms-fontColor-themeDark--hover",
+                        "title": "='Start a chat with ' + join(@currentField.title, ', ')",
+                        "iconName": "TeamsLogo16"
+                      },
+                      "style": {
+                        "text-decoration": "none"
+                      }
+                    }
+                  ]
+                },
+
+
+                {
+                  "elmType": "div",
+                  "txtContent": "@currentField.jobTitle",
+                  "style": {
+                    "display": "=if(@currentField.jobTitle == '', 'none', 'block')"
+                  },
+                  "attributes": {
+                    "class": "ms-fontSize-m ms-fontWeight-regular ms-fontColor-neutralSecondary"
+                  }
+                },
+                {
+                  "elmType": "div",
+                  "txtContent": "@currentField.department",
+                  "style": {
+                    "display": "=if(@currentField.department == '', 'none', 'block')"
+                  },
+                  "attributes": {
+                    "class": "ms-fontSize-m ms-fontWeight-regular ms-fontColor-neutralSecondary"
+                  }
+                },
+                {
+                  "elmType": "div",
+                  "style": {
+                    "flex-grow": "1",
+                    "display": "flex",
+                    "flex-direction": "row",
+                    "flex-wrap": "wrap",
+                    "align-items": "flex-end"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
