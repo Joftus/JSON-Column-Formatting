@@ -33,7 +33,7 @@
             {
               "elmType": "img",
               "attributes": {
-                "src": "=getUserImage(@currentField.email, 'S')"
+                "src": "=getUserImage([$person.email], 'S')"
               },
               "style": {
                 "width": "auto",
@@ -62,7 +62,7 @@
                   "children": [
                     {
                       "elmType": "div",
-                      "txtContent": "@currentField.title",
+                      "txtContent": "[$person.title]",
                       "style": {
                         "padding-right": "6px"
                       },
@@ -79,15 +79,15 @@
                       "attributes": {
                         "iconName": "Mail",
                         "class": "sp-field-quickActions",
-                        "href": "='mailto:' + @currentField.email + '?subject=Contract Request&body=Dear ' + @currentField.title + ',\r\n'"
+                        "href": "='mailto:' + [$person.email] + '?subject=Contract Request&body=Dear ' + [$person.title] + ',\r\n'"
                       }
                     },
                     {
                       "elmType": "a",
                       "attributes": {
-                        "href": "='https://teams.microsoft.com/l/chat/0/0?users=' + join(@currentField.email,',') + '&topicName=Contract Request&message='",
+                        "href": "='https://teams.microsoft.com/l/chat/0/0?users=' + join([$person.email],',') + '&topicName=Contract Request&message='",
                         "class": "ms-fontColor-themePrimary ms-fontColor-themeDark--hover",
-                        "title": "='Start a chat with ' + join(@currentField.title, ', ')",
+                        "title": "='Start a chat with ' + join([$person.title], ', ')",
                         "iconName": "TeamsLogo16"
                       },
                       "style": {
@@ -100,9 +100,9 @@
 
                 {
                   "elmType": "div",
-                  "txtContent": "@currentField.jobTitle",
+                  "txtContent": "[$person.jobTitle]",
                   "style": {
-                    "display": "=if(@currentField.jobTitle == '', 'none', 'block')"
+                    "display": "=if([$person.jobTitle] == '', 'none', 'block')"
                   },
                   "attributes": {
                     "class": "ms-fontSize-m ms-fontWeight-regular ms-fontColor-neutralSecondary"
@@ -110,9 +110,9 @@
                 },
                 {
                   "elmType": "div",
-                  "txtContent": "@currentField.department",
+                  "txtContent": "[$person.department]",
                   "style": {
-                    "display": "=if(@currentField.department == '', 'none', 'block')"
+                    "display": "=if([$person.department] == '', 'none', 'block')"
                   },
                   "attributes": {
                     "class": "ms-fontSize-m ms-fontWeight-regular ms-fontColor-neutralSecondary"

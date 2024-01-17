@@ -29,7 +29,7 @@
             {
               "elmType": "img",
               "attributes": {
-                "src": "=getUserImage(@currentField.email, 'S')"
+                "src": "=getUserImage([$person.email], 'S')"
               },
               "style": {
                 "width": "auto",
@@ -58,7 +58,7 @@
                   "children": [
                     {
                       "elmType": "div",
-                      "txtContent": "@currentField.title",
+                      "txtContent": "[$person.title]",
                       "style": {
                         "padding-right": "6px"
                       }
@@ -75,7 +75,7 @@
                           "operator": "+",
                           "operands": [
                             "mailto:",
-                            "@currentField.email",
+                            "[$person.email]",
                             "?subject=Contract Request&body=\n",
                             "[$ID]"
                           ]
@@ -86,14 +86,14 @@
                 },
                 {
                   "elmType": "div",
-                  "txtContent": "@currentField.jobTitle",
+                  "txtContent": "[$person.jobTitle]",
                   "style": {
                     "color": "gray"
                   }
                 },
                 {
                   "elmType": "div",
-                  "txtContent": "@currentField.department",
+                  "txtContent": "[$person.department]",
                   "style": {
                     "color": "gray"
                   }
